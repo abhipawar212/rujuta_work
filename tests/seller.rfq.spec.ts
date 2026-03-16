@@ -1,0 +1,37 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+        test.setTimeout(0);
+  await page.goto('https://mssit3.lntsufin.com/shome');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.locator('#mobileLoginNumber').fill('1063123506');
+  await page.getByRole('button', { name: 'Get OTP' }).click();
+  await page.locator('#otpInput').fill('1234');
+  await page.getByRole('button', { name: 'Verify' }).click();
+  //await page.locator('#dropdownMenuButton').click();
+  await page.getByRole('button', { name: 'RFQs icon active RFQs' }).click();
+  await page.goto('https://mssit3.lntsufin.com/seller/#/quote-response/manage/active-request?title=Manage%20your%20RFQs');
+  await page.getByRole('button', { name: 'View Details' }).first().click();
+  await page.getByRole('spinbutton').click();
+  await page.getByRole('spinbutton').fill('10001');
+  await page.locator('#collapse0 input[type="text"]').click();
+  await page.locator('#collapse0 input[type="text"]').fill('18');
+  await page.locator('base-datepicker svg').click();
+  await page.getByText('7', { exact: true }).click();
+  await page.getByRole('textbox').nth(4).click();
+  await page.getByRole('textbox').nth(4).fill('14');
+  await page.getByText('+ Add Ex-works Price').click();
+  await page.getByRole('spinbutton').nth(1).click();
+  await page.getByRole('spinbutton').nth(1).fill('1020');
+  await page.locator('input[type="text"]').nth(1).click();
+  await page.locator('input[type="text"]').nth(1).fill('16');
+  await page.locator('input[type="tel"]').nth(3).click();
+  await page.locator('input[type="tel"]').nth(3).fill('14');
+  await page.getByText('+ Upload Documents').click();
+ // await page.getByRole('button', { name: 'Choose File' }).click();
+ // await page.getByRole('button', { name: 'Choose File' }).setInputFiles('product_order_PSS04577-0029.pdf');
+//  await page.getByRole('button', { name: 'Yes' }).click();
+  await page.getByRole('button', { name: 'Submit Quote' }).click();
+  await page.getByRole('button', { name: 'Ok' }).click();
+  await page.getByRole('button', { name: 'Cancel' }).click();
+});
